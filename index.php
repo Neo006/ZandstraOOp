@@ -10,6 +10,7 @@ class ShopProduct
 	public $producerFirstName;
 	public $producerMainName;
 	public $price;
+	protected $discount = 0;
 	
 	public function __construct($title, $firstName, $mainName, $price)
     {
@@ -29,6 +30,16 @@ class ShopProduct
         $base  = $this->title . " ( " . $this->producerMainName . " ";
         $base .= $this->producerFirstName . " )";
         return $base;
+    }
+
+    public function setDiscount($num)
+    {
+        $this->discount = $num;
+    }
+
+    public function getPrice()
+    {
+        return ($this->price - $this->discount);
     }
 }
 
